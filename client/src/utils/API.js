@@ -10,7 +10,19 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getBooks: function () {
+  // getBooks: function () {
+  //   return axios.get("/api/books");
+  // },
+  //Submit a search term to google books API
+  bookSearch: function (query) {
+    // TODO: Should this have like a try-catch or a .then/.catch?
+    // return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+    return axios.get(
+      `https://www.googleapis.com/books/v1/volumes?q=harry+potter`
+    );
+  },
+  // Return list of all saved books
+  getSavedBooks: function () {
     return axios.get("/api/books");
   },
   // Saves a book to the database

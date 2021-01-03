@@ -1,39 +1,67 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import NavBar from "../Components/NavBar";
 import ResultItem from "../Components/ResultItem";
 import API from "../utils/API";
 
 function Search() {
+  const bookSearchRef = useRef();
   // Setting our component's initial state
   const [books, setBooks] = useState([]);
   const [formObject, setFormObject] = useState({});
 
-  // Load all books and store them with setBooks
-  useEffect(() => {
-    loadBooks();
-  }, []);
+  // //TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO: this should go in saved searches I think
+  // // Load all books and store them with setBooks
+  // useEffect(() => {
+  //   loadBooks();
+  // }, []);
 
-  // Loads all books and sets them to books
-  function loadBooks() {
-    API.getBooks()
-      .then((res) => setBooks(res.data))
-      .catch((err) => console.log(err));
-  }
+  // // Loads all books and sets them to books
+  // function loadBooks() {
+  //   API.getBooks()
+  //     .then((res) => {
+  //       console.log(
+  //         "🚀 ~ file: Search.js ~ line 21 ~ .then ~ res.data",
+  //         res.data
+  //       );
+  //       setBooks(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
+  const handleSubmit = (e) => {
+    e.preventDefault;
+
+    API.bookSearch(bookSearchRef.current.value)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log("ERROR!!!!!!!!!!!!!!!", err));
+    // .then((books) => {
+    //   console.log(
+    //     "🚀 ~ file: search.js ~ line 38 ~ handleSubmit ~ books",
+    //     books
+    //   );
+
+    //   setBooks(books).catch((err) => console.log(err));
+    // });
+  };
 
   return (
     <div>
       <div className="container border p-2">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Book Search</label>
             <input
+              required
+              ref={bookSearchRef}
               type="string"
               className="form-control"
               placeholder="Enter book to search"
             ></input>
           </div>
           <button type="submit" className="btn btn-primary">
-            Search <i class="fa fa-search fa-sm"></i>
+            Search <i className="fa fa-search fa-sm"></i>
           </button>
         </form>
       </div>
