@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const booksController = require("../../controllers/booksController");
 
-// Matches with "/api/posts" //TODO: Why does it?
+// Matches with "/api/posts" //TODO: Why/how does it?
 router
   // root
   .route("/")

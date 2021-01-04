@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../utils/API";
 
-//TODO: destruct the props
 function ResultItem({ bookInfo }) {
-  // { title, authors, description, imageLinks, previewLink }
   const bookTitle = bookInfo.title;
 
   const bookAuthors = bookInfo.authors;

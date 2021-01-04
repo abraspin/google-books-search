@@ -46,11 +46,7 @@ function Search() {
             //FIXME: key? eh?
 
             const key = book._id;
-            // console.log(book.volumeInfo.title);
-            // console.log(book.volumeInfo.authors);
-            // console.log(book.volumeInfo.description);
-            // console.log(book.volumeInfo.imageLinks.thumbnail);
-            // console.log(book.volumeInfo.previewLink);
+
             return <ResultItem bookInfo={book.volumeInfo}></ResultItem>;
           })
         ) : (
