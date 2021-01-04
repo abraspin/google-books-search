@@ -18,7 +18,7 @@ export default {
     // TODO: Should this have like a try-catch or a .then/.catch?
     // return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
     return axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=harry+potter`
+      `https://www.googleapis.com/books/v1/volumes?q=${query}`
     );
   },
   // Return list of all saved books
