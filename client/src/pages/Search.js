@@ -7,43 +7,20 @@ function Search() {
   const bookSearchRef = useRef();
   // Setting our component's initial state
   const [books, setBooks] = useState([]);
-  const [formObject, setFormObject] = useState({});
 
-  // //TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO: this should go in saved searches I think
-  // // Load all books and store them with setBooks
-  // useEffect(() => {
-  //   loadBooks();
-  // }, []);
-
-  // // Loads all books and sets them to books
-  // function loadBooks() {
-  //   API.getBooks()
-  //     .then((res) => {
-  //       console.log(
-  //         "🚀 ~ file: Search.js ~ line 21 ~ .then ~ res.data",
-  //         res.data
-  //       );
-  //       setBooks(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
-
-  const handleSubmit = (e) => {
+  const handleSearchBook = (e) => {
     e.preventDefault();
-
     API.bookSearch(bookSearchRef.current.value)
       .then((data) => {
-        console.log("HERE IS THE DATA FROM THAT API CALL:", data.data.items);
         setBooks(data.data.items);
       })
-      .then(console.log("I JUST SET BOOKS TO:", books))
       .catch((err) => console.log(err));
   };
 
   return (
     <div>
       <div className="container border p-2">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSearchBook}>
           <div className="form-group">
             <label>Book Search</label>
             <input
@@ -60,10 +37,10 @@ function Search() {
         </form>
       </div>
       <br></br>
-      {/* TODO: Add a ternary operator for if !results.length "No results to display" or something */}
       <div className="container border">
         <h1 className="p-2 font-weight-bold font-italic">Results</h1>
         <hr></hr>
+        {/* TODO: Should this be books.length? It crashed it one time... */}
         {books ? (
           books.map((book) => {
             console.log(
