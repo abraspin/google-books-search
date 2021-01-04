@@ -3,16 +3,9 @@ import API from "../utils/API";
 
 //TODO: destruct the props
 function ResultItem({ bookInfo }) {
-  console.log(
-    "🚀 ~ file: ResultItem.js ~ line 5 ~ ResultItem ~ bookInfo",
-    bookInfo
-  );
   // { title, authors, description, imageLinks, previewLink }
   const bookTitle = bookInfo.title;
-  console.log(
-    "🚀 ~ file: ResultItem.js ~ line 6 ~ ResultItem ~ bookTitle",
-    bookTitle
-  );
+
   const bookAuthors = bookInfo.authors;
   const bookDescription = bookInfo.description;
   const bookPreviewLink = bookInfo.previewLink;
@@ -31,6 +24,8 @@ function ResultItem({ bookInfo }) {
 
   const handleSaveBook = (e) => {
     console.log(e);
+    // API.saveBook("random book");
+    console.log("I'M ABOUT TO TRY AND SAVE A BOOK FROM THE BUTTON!");
     API.saveBook({
       title: bookTitle,
       authors: bookAuthors,
@@ -43,8 +38,8 @@ function ResultItem({ bookInfo }) {
   return (
     <div className="container border my-4 py-2">
       <div className="row">
-        <h4 className="col-md-10 text-left pt-3 ">{bookTitle}</h4>
-        <div className="col-md-2 text-right">
+        <h4 className="col-md-9 text-left pt-3 ">{bookTitle}</h4>
+        <div className="col-md-3 text-right">
           <button
             onClick={() => handleViewBookPreview()}
             type="button"
