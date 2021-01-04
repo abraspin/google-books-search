@@ -20,18 +20,27 @@ function Search() {
       })
       .catch((err) => console.log(err));
   }
-
+  if (books) {
+    console.log("I THINK THERE ARE BOOKS", books);
+  }
   return (
     <div>
-      {/* TODO: Should this be books.length? It crashed it one time... */}
-      {books ? (
+      {books.length ? (
         books.map((book) => {
           const key = book._id;
 
           return <SavedBookCard savedBook={book}></SavedBookCard>;
         })
       ) : (
-        <h3>No Results to Display</h3>
+        <div className="container">
+          <div className="row text-center border rounded pb-4  bg-secondary">
+            <h3>
+              <br></br>
+              Saved books from the search will appear here!
+              <small> (Once you save some!)</small>
+            </h3>
+          </div>
+        </div>
       )}
     </div>
   );

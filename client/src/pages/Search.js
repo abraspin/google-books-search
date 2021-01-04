@@ -40,8 +40,8 @@ function Search() {
       <div className="container border">
         <h1 className="p-2 font-weight-bold font-italic">Results</h1>
         <hr></hr>
-        {/* TODO: Should this be books.length? It crashed it one time... */}
-        {books ? (
+
+        {books.length ? (
           books.map((book) => {
             //FIXME: key? eh?
 
@@ -50,7 +50,9 @@ function Search() {
             return <ResultItem bookInfo={book.volumeInfo}></ResultItem>;
           })
         ) : (
-          <h3>No Results to Display</h3>
+          <div className="row  border border-primary m-2">
+            <h3>No Results to Display</h3>
+          </div>
         )}
       </div>
     </div>
