@@ -64,18 +64,22 @@ function Search() {
       <div className="container border">
         <h1 className="p-2 font-weight-bold font-italic">Results</h1>
         <hr></hr>
-        {books.map((book) => {
-          console.log(
-            "🚀 ~ file: search.js ~ line 68 ~ {books.map ~ book IN THE MAP FUNCTION",
-            book
-          );
-          // console.log(book.volumeInfo.title);
-          // console.log(book.volumeInfo.authors);
-          // console.log(book.volumeInfo.description);
-          // console.log(book.volumeInfo.imageLinks.thumbnail);
-          // console.log(book.volumeInfo.previewLink);
-          return <ResultItem bookInfo={book.volumeInfo}></ResultItem>;
-        })}
+        {books ? (
+          books.map((book) => {
+            console.log(
+              "🚀 ~ file: search.js ~ line 68 ~ {books.map ~ book IN THE MAP FUNCTION",
+              book
+            );
+            // console.log(book.volumeInfo.title);
+            // console.log(book.volumeInfo.authors);
+            // console.log(book.volumeInfo.description);
+            // console.log(book.volumeInfo.imageLinks.thumbnail);
+            // console.log(book.volumeInfo.previewLink);
+            return <ResultItem bookInfo={book.volumeInfo}></ResultItem>;
+          })
+        ) : (
+          <h3>No Results to Display</h3>
+        )}
       </div>
     </div>
   );
