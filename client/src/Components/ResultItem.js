@@ -31,6 +31,7 @@ function ResultItem({ bookInfo }) {
       image: bookThumbnail,
       link: bookPreviewLink,
     });
+    alert("saved!");
   };
 
   return (
