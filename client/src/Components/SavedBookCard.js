@@ -19,7 +19,7 @@ function SavedBookCard({ savedBook }) {
     window.open(bookPreviewLink, "_blank");
   };
 
-  //TODO: Move this up and then pass it down so it can run at the parent level and re-render the page :thumbs
+  //TODO:TODO:TODO:TODO:TODO:TODO:TODO: Move this up and then pass it down so it can run at the parent level and re-render the page :thumbs
   const handleDeleteSavedBook = () => {
     API.deleteBook(bookID);
   };
@@ -41,7 +41,7 @@ function SavedBookCard({ savedBook }) {
             type="button"
             className="btn btn-secondary m-2"
           >
-            Delete
+            Remove
           </button>
         </div>
       </div>
