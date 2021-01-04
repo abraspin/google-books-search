@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const routes = require("./routes");
+
 // const routes = require("./routes"); TODO: ADD ROUTES TODO:
 
 // Define middleware here
@@ -18,17 +20,20 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-// app.use(routes); TODO: ADD ROUTES TODO:
+app.use(routes);
 
 // Connect to MongoDB Atlas DB with Mongoose
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/google-search", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/google-search",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  }
+);
 
-// Send every other request to the React app
+// Send every other request to the React app FIXME: Is this right? FIXME:
 // Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
