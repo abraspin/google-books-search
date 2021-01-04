@@ -5,10 +5,10 @@ function NavBar() {
   const [pageSelected, setPageSelected] = useState("");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-5">
       <div className="col-md-6 pl-5">
         <a className="navbar-brand" href={"/"}>
-          Book Search
+          <h2> Book Search</h2>
         </a>
         <button
           className="navbar-toggler"
@@ -29,15 +29,15 @@ function NavBar() {
             className="collapse navbar-collapse float-right"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav  float-right">
-              <li className="nav-item ">
-                <Link to="/" className="nav-link">
-                  Search
+            <ul className="navbar-nav  float-right ">
+              <li className="nav-item rounded border  border-primary mx-1 ">
+                <Link to="/" className="nav-link px-5">
+                  <h3> Search</h3>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/Saved" className="nav-link">
-                  Saved
+              <li className="nav-item rounded border border-secondary mx-1">
+                <Link to="/Saved" className="nav-link px-5">
+                  <h3> Saved </h3>
                 </Link>
               </li>
             </ul>
