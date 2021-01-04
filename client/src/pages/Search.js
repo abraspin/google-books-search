@@ -29,21 +29,15 @@ function Search() {
   // }
 
   const handleSubmit = (e) => {
-    e.preventDefault;
+    e.preventDefault();
 
     API.bookSearch(bookSearchRef.current.value)
       .then((data) => {
-        console.log(data);
+        console.log("HERE IS THE DATA FROM THAT API CALL:", data.data.items);
+        setBooks(data.data.items);
       })
-      .catch((err) => console.log("ERROR!!!!!!!!!!!!!!!", err));
-    // .then((books) => {
-    //   console.log(
-    //     "🚀 ~ file: search.js ~ line 38 ~ handleSubmit ~ books",
-    //     books
-    //   );
-
-    //   setBooks(books).catch((err) => console.log(err));
-    // });
+      .then(console.log("I JUST SET BOOKS TO:", books))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -70,6 +64,14 @@ function Search() {
       <div className="container border">
         <h1 className="p-2 font-weight-bold font-italic">Results</h1>
         <hr></hr>
+        {/* {books.map((book) => {
+          console.log(book[0].volumeInfo.title);
+          console.log(book[0].volumeInfo.authors);
+          console.log(book[0].volumeInfo.description);
+          console.log(book[0].volumeInfo.imageLinks.thumbnail);
+          console.log(book[0].volumeInfo.previewLink);
+          return;
+        })} */}
         <ResultItem></ResultItem>
         <ResultItem></ResultItem>
         <ResultItem></ResultItem>
