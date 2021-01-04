@@ -22,6 +22,7 @@ function SavedBookCard({ savedBook }) {
   //TODO:TODO:TODO:TODO:TODO:TODO:TODO: Move this up and then pass it down so it can run at the parent level and re-render the page :thumbs
   const handleDeleteSavedBook = () => {
     API.deleteBook(bookID);
+    location.reload(false);
   };
 
   return (
