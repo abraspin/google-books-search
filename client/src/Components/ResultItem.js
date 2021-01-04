@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import API from "../utils/API";
 
 //TODO: destruct the props
 function ResultItem({ bookInfo }) {
@@ -21,24 +22,41 @@ function ResultItem({ bookInfo }) {
       bookThumbnail = bookInfo.imageLinks.thumbnail;
     }
   }
-  // FIXME: This is weird
-  const goToBookPreview = () => {
+
+  // FIXME: This redirection is weird?
+  const handleViewBookPreview = () => {
     // window.location.href = bookPreviewLink;
     window.open(bookPreviewLink, "_blank");
   };
+
+  const handleSaveBook = (e) => {
+    console.log(e);
+    API.saveBook({
+      title: bookTitle,
+      authors: bookAuthors,
+      description: bookDescription,
+      image: bookThumbnail,
+      link: bookPreviewLink,
+    });
+  };
+
   return (
     <div className="container border my-4 py-2">
       <div className="row">
         <h4 className="col-md-10 text-left pt-3 ">{bookTitle}</h4>
         <div className="col-md-2 text-right">
           <button
-            onClick={() => goToBookPreview()}
+            onClick={() => handleViewBookPreview()}
             type="button"
             className="btn btn-primary m-2"
           >
             View
           </button>
-          <button type="button" className="btn btn-secondary m-2">
+          <button
+            onClick={() => handleSaveBook()}
+            type="button"
+            className="btn btn-secondary m-2"
+          >
             Save
           </button>
         </div>
