@@ -35,8 +35,8 @@ Please contact me if you find an issue or have a suggestion for future developme
 ## User Story
 
 >As an avid reader  
->I want to be able to search the google books repository
->So that I can keep track of specific books I've saved
+>I want to be able to search the google books repository  
+>So that I can keep track of specific books I've saved  
 
 
 ---
