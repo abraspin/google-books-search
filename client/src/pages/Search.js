@@ -42,12 +42,10 @@ function Search() {
         <hr></hr>
 
         {books.length ? (
-          books.map((book) => {
-            //FIXME: key? eh?
-
-            const key = book._id;
-
-            return <ResultItem bookInfo={book.volumeInfo}></ResultItem>;
+          books.map((book, key) => {
+            return (
+              <ResultItem key={key} bookInfo={book.volumeInfo}></ResultItem>
+            );
           })
         ) : (
           <div className="row  border border-primary m-2">

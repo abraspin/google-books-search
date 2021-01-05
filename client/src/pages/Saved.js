@@ -23,13 +23,27 @@ function Search() {
   if (books) {
     console.log("I THINK THERE ARE BOOKS", books);
   }
+
+  function deleteBook(id) {
+    let newBooks = books.filter((book) => {
+      return book._id != id;
+    });
+    setBooks(newBooks);
+  }
+
   return (
     <div>
       {books.length ? (
-        books.map((book) => {
-          const key = book._id;
+        books.map((book, key) => {
+          // const key = book._id;
 
-          return <SavedBookCard savedBook={book}></SavedBookCard>;
+          return (
+            <SavedBookCard
+              key={key}
+              deleteBook={deleteBook}
+              savedBook={book}
+            ></SavedBookCard>
+          );
         })
       ) : (
         <div className="container">

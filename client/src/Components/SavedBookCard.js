@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../utils/API";
 
-function SavedBookCard({ savedBook }) {
+function SavedBookCard({ savedBook, deleteBook }) {
   const bookID = savedBook._id;
 
   const bookTitle = savedBook.title;
@@ -19,10 +19,9 @@ function SavedBookCard({ savedBook }) {
     window.open(bookPreviewLink, "_blank");
   };
 
-  //TODO:TODO:TODO:TODO:TODO:TODO:TODO: Move this up and then pass it down so it can run at the parent level and re-render the page :thumbs
   const handleDeleteSavedBook = () => {
     API.deleteBook(bookID);
-    location.reload(false);
+    deleteBook(bookID);
   };
 
   return (
