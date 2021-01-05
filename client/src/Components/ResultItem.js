@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import API from "../utils/API";
 
 function ResultItem({ bookInfo }) {
-  const bookTitle = bookInfo.title;
+  const [clicked, setClicked] = useState(false);
 
+  const bookTitle = bookInfo.title;
   const bookAuthors = bookInfo.authors;
   const bookDescription = bookInfo.description;
   const bookPreviewLink = bookInfo.previewLink;
@@ -31,6 +32,7 @@ function ResultItem({ bookInfo }) {
       image: bookThumbnail,
       link: bookPreviewLink,
     });
+    setClicked(true);
     alert("saved!");
   };
 
@@ -50,6 +52,7 @@ function ResultItem({ bookInfo }) {
             onClick={() => handleSaveBook()}
             type="button"
             className="btn btn-secondary m-2"
+            disabled={clicked}
           >
             Save
           </button>
